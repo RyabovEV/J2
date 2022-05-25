@@ -1,0 +1,43 @@
+package HW1;
+
+public class Robot implements Acnions{    protected boolean onDistance = true;
+    protected int runPower;
+    protected int jumpPower;
+
+    Robot(int runPower, int jumpPower) {
+        this.runPower = runPower;
+        this.jumpPower = jumpPower;
+    }
+
+    @Override
+    public void run() {
+        if (onDistance) {
+            System.out.println("робот пробежал");
+        } else System.out.println("робот спллаховал");
+    }
+
+    @Override
+    public void jump() {
+        if (onDistance) {
+            System.out.println("робот прыгнул");
+        } else System.out.println("робот спллаховал");
+    }
+
+    @Override
+    public void setOnDistanceFalse() {
+        this.onDistance = false;
+    }
+
+    @Override
+    public void obstacle(Obstacles obstacle) {
+        if (!onDistance)return;
+        if (obstacle instanceof Wall) {
+            if (((Wall) obstacle).height > jumpPower) setOnDistanceFalse();
+            jump();
+        }
+        if (obstacle instanceof Treadmill) {
+            if (((Treadmill) obstacle).distance > runPower) setOnDistanceFalse();
+            run();
+        }
+    }
+}
