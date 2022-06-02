@@ -8,10 +8,12 @@ public class MyArrayDataException extends NumberFormatException {
 
     public MyArrayDataException(String string, int i,int j) {
         this.string = string;
+        this.i = i;
+        this.i = i;
     }
 
     @Override
     public String toString() {
-        return "massive data exception{ ячейка "+ (i+2) + "," + (j+2) + "[" + string + "]}";
+        return "massive data exception{ Значение " + string + " Строка " + (i + 1)  + " Столбец " + (j + 1) + "}";
     }
 }
